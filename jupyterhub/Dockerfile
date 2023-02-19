@@ -1,5 +1,12 @@
+#FROM node:latest AS node_base
+
+#RUN echo "NODE Version:" && node --version
+#RUN echo "NPM Version:" && npm --version
+
 FROM python
 LABEL maintainer="ahkui <ahkui@outlook.com>"
+
+#COPY --from=node_base  . .
 
 ENV JUPYTERHUB_USER_DATA ${JUPYTERHUB_USER_DATA}
 ENV JUPYTERHUB_POSTGRES_DB ${JUPYTERHUB_POSTGRES_DB}

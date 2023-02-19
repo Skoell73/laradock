@@ -1,6 +1,6 @@
 FROM tensorflow/tensorflow:latest-gpu
-
 MAINTAINER ahkui <ahkui@outlook.com>
+
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         python \
@@ -24,6 +24,7 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
     python3 get-pip.py && \
     rm get-pip.py
 
+
 RUN python3 -m pip --quiet --no-cache-dir install \
         Pillow \
         h5py \
@@ -45,9 +46,12 @@ RUN python3 -m pip --quiet --no-cache-dir install \
         bs4 \
         && \
     python3 -m ipykernel.kernelspec
+	
+# Ajout Ludo
+RUN pip --version
 
 RUN pip --no-cache-dir install \
-    https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.8.0-cp35-cp35m-linux_x86_64.whl
+	https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.8.0-cp35-cp35m-linux_x86_64.whl
 
 RUN ln -s -f /usr/bin/python3 /usr/bin/python
 
